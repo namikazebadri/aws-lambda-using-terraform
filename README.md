@@ -11,11 +11,11 @@ terraform init
 ## Terraform Plan
 
 ```shell
-terraform plan
+TF_VAR_LAMBDA_ENV=DEV terraform plan
 ```
 
 ## Terraform Apply
 
 ```shell
-terraform apply
+TF_VAR_LAMBDA_ENV=DEV terraform apply
 ```
