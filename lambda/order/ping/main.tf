@@ -62,6 +62,6 @@ resource "aws_lambda_event_source_mapping" "event_source_mapping" {
 }
 
 resource "aws_cloudwatch_log_group" "log_group" {
-  name              = "/aws/lambda/${local.project}/${local.module_function}/${var.LAMBDA_ENV}"
+  name              = "/aws/lambda/${aws_lambda_function.order_ping.function_name}"
   retention_in_days = 7
 }
