@@ -21,25 +21,25 @@ provider "aws" {
 module "cart_ping" {
   source = "./lambda/cart/ping"
   iam_role = aws_iam_role.lambda.arn
-  LAMBDA_ENV = var.LAMBDA_ENV
+  ENV = var.ENV
 }
 
 module "order_ping" {
   source = "./lambda/order/ping"
   iam_role = aws_iam_role.lambda.arn
-  LAMBDA_ENV = var.LAMBDA_ENV
+  ENV = var.ENV
 }
 
 module "product_ping" {
   source = "./lambda/product/ping"
   iam_role = aws_iam_role.lambda.arn
-  LAMBDA_ENV = var.LAMBDA_ENV
+  ENV = var.ENV
 }
 
 module "user_ping" {
   source = "./lambda/user/ping"
   iam_role = aws_iam_role.lambda.arn
-  LAMBDA_ENV = var.LAMBDA_ENV
+  ENV = var.ENV
 }
 
 output "status" {

@@ -27,13 +27,13 @@ data "archive_file" "function_archive" {
 }
 
 resource "aws_sqs_queue" "cart_ping_dead_letter_queue" {
-  name                        = "${var.LAMBDA_ENV}-${local.project}_${local.module}_${local.function}-DLQ"
+  name                        = "${var.ENV}-${local.project}_${local.module}_${local.function}-DLQ"
   message_retention_seconds   = 60
   visibility_timeout_seconds  = 60
 }
 
 resource "aws_sqs_queue" "cart_ping_queue" {
-  name                      = "${var.LAMBDA_ENV}-${local.project}_${local.module}_${local.function}"
+  name                      = "${var.ENV}-${local.project}_${local.module}_${local.function}"
   delay_seconds             = 90
   max_message_size          = 2048
   message_retention_seconds = 86400
@@ -42,7 +42,7 @@ resource "aws_sqs_queue" "cart_ping_queue" {
 }
 
 resource "aws_lambda_function" "cart_ping" {
-  function_name = "${var.LAMBDA_ENV}-${local.project}_${local.module}_${local.function}"
+  function_name = "${var.ENV}-${local.project}_${local.module}_${local.function}"
   description   = "Lambda for ${local.module} module."
   role          = var.iam_role
   handler       = local.function
